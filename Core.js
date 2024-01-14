@@ -309,7 +309,7 @@ module.exports = async (Atlas, m, commands, chatUpdate) => {
     const uptime = () => formatTime(process.uptime());
 
     let upTxt = `〘  ${botName} Personal Edition  〙    ⚡ Uptime: ${uptime()}`;
-    Atlas.setStatus(upTxt);
+    
 
     cmd.start(Atlas, m, {
       name: "Atlas",

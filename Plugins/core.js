@@ -13,6 +13,8 @@ let mergedCommands = [
   "system",
   "info",
   "about",
+  "ping", 
+  "p",
 ];
 
 module.exports = {
@@ -163,6 +165,17 @@ module.exports = {
 
         break;
 
+      case "ping":
+      case "p":
+        await doReact("☃️");
+        var inital = new Date().getTime();
+        const { key } = await Atlas.sendMessage( m.from, {text: '```Ping!!!```'});
+        var final = new Date().getTime();
+        // await Secktor.sleep(1000)
+        return await Atlas.sendMessage( m.from, {text: '*Pong!!!*\n *' + (final - inital) + ' ms* ', edit: key});
+
+        break;
+        
       default:
         break;
     }

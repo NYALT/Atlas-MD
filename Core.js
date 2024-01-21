@@ -308,7 +308,7 @@ module.exports = async (Atlas, m, commands, chatUpdate) => {
     };
     const uptime = () => formatTime(process.uptime());
 
-    let upTxt = `〘  ${botName} Personal Edition  〙    ⚡ Uptime: ${uptime()}`;
+    // let upTxt = `〘  ${botName} Personal Edition  〙    ⚡ Uptime: ${uptime()}`;
     
 
     cmd.start(Atlas, m, {

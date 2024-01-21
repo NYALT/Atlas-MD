@@ -6,12 +6,20 @@ let mergedCommands = [
   "facebookdl",
   "mediafiredl",
   "mediafire",
+  "imagedl",
+  "imgdl",
+  "videodl",
+  "viddl",
+  "imagedlc",
+  "imgdlc",
+  "videodlc",
+  "viddlc",
 ];
 
 module.exports = {
   name: "downloader",
   alias: [...mergedCommands],
-  uniquecommands: ["igdl", "fbdl", "mediafiredl"],
+  uniquecommands: ["igdl", "fbdl", "mediafiredl", "imagedl", "videodl", "imagedlc", "videodlc", ],
   description: "All file dowloader commands",
   start: async (Atlas, m, { inputCMD, text, doReact, prefix, pushName }) => {
     switch (inputCMD) {
@@ -138,6 +146,113 @@ Downloading...`;
         }
 
         break;
+        
+      case "imagedl":
+        if (!text) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid link!`
+          );
+        }
+        if (!text.includes(".jpg")) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid Image link!`
+          );
+        }
+        await doReact("✔️");
+        
+        const imgurl = text.split(" ")[0]
+        Atlas.sendMessage(
+          m.from,
+          { 
+            image: { url: imgurl }, 
+            caption: `_Downloaded by:_ *${botName}*`, 
+          },
+          { quoted: m }
+        );
+        break;
+        
+      case "videodl":
+        if (!text) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid link!`
+          );
+        }
+        if (!text.includes(".mp4")) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid Video link!`
+          );
+        }
+        await doReact("✔️");
+        
+        const vidurl = text.split(" ")[0]
+        Atlas.sendMessage(
+          m.from,
+          { 
+            video: { url: vidurl }, 
+            caption: `_Downloaded by:_ *${botName}*`, 
+          },
+          { quoted: m }
+        );
+        break;
+      
+      case "imagedlc":
+        if (!text) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid link!`
+          );
+        }
+        if (!text.includes(".jpg")) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid Image link!`
+          );
+        }
+        await doReact("✔️");
+        
+        const [text1, text2] = text.split("+")
+        const imgurls = text1.split(" ")[0]
+        Atlas.sendMessage(
+          m.from,
+          { 
+            image: { url: imgurls }, 
+            caption: text2,
+          },
+          { quoted: m }
+        );
+        break;
+        
+      case "videodlc":
+        if (!text) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid link!`
+          );
+        }
+        if (!text.includes(".mp4")) {
+          await doReact("❌");
+          return m.reply(
+          `Please provide a valid Video link!`
+          );
+        }
+        await doReact("✔️");
+        
+        const [text3, text4] = text.split("+")
+        const vidurls = text3.split(" ")[0]
+        Atlas.sendMessage(
+          m.from,
+          { 
+            video: { url: vidurls }, 
+            caption: text4, 
+          },
+          { quoted: m }
+        );
+        break;
+        
 
       default:
         break;

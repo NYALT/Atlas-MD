@@ -20,7 +20,7 @@ let mergedCommands = [
 module.exports = {
   name: "systemcommands",
   alias: [...mergedCommands],
-  uniquecommands: ["script", "support", "help", "system", "about"],
+  uniquecommands: ["script", "support", "help", "system", "about", "ping"],
   description: "All system commands",
   start: async (
     Atlas,
